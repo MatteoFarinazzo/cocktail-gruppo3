@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/cocktails")
 public class cocktailController {
     @Autowired
     private CocktailRepository cocktailRepository;
@@ -79,7 +79,7 @@ public class cocktailController {
             }
             formCocktail.setImage(cocktailToEdit.getImage());
             Cocktail savedPizza = cocktailRepository.save(formCocktail);
-            return "redirect:/cocktail/show/";
+            return "redirect:/cocktails/show/";
         }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cocktail with id" + id + "not found");
         }
@@ -91,7 +91,7 @@ public class cocktailController {
         if (result.isPresent()){
             cocktailRepository.deleteById(id);
             redirectAttributes.addFlashAttribute("redirectMessage", result.get().getName() + " è stato cancellato!");
-            return "redirect:/cocktail/show/";
+            return "redirect:/cocktails/show/";
         }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cocktail with id" + id + "not found");
         }
