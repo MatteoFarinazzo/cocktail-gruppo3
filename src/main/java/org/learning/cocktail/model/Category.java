@@ -1,4 +1,4 @@
-package org.learning.cocktail.Model;
+package org.learning.cocktail.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

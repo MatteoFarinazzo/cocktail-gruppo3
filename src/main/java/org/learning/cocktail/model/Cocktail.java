@@ -1,4 +1,4 @@
-package org.learning.cocktail.Model;
+package org.learning.cocktail.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -17,6 +17,9 @@ public class Cocktail {
     private String image;
     @NotNull
     private BigDecimal price;
+
+    @ManyToOne
+    private Category category;
 
 
     public Integer getId() {
@@ -57,5 +60,13 @@ public class Cocktail {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
