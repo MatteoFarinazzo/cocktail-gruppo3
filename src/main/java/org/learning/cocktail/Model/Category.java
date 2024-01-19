@@ -12,7 +12,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotNull
-    private String name;
+    private String nome;
     @OneToMany
     private List<Category> categories;
 
@@ -20,12 +20,12 @@ public class Category {
         return categories;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public void setCategories(List<Category> categories) {
