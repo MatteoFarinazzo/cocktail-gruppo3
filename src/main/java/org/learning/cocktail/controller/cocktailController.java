@@ -56,7 +56,7 @@ public class cocktailController {
     @PostMapping("/create")
     public String store(@Valid @ModelAttribute("cocktail") Cocktail formCocktail, Model model) {
         Cocktail savedCocktail = cocktailRepository.save(formCocktail);
-        return "redirect:/show/";
+        return "redirect:/show";
     }
 
     @GetMapping("/edit/{id}")
@@ -80,7 +80,7 @@ public class cocktailController {
             }
             formCocktail.setImage(cocktailToEdit.getImage());
             Cocktail savedPizza = cocktailRepository.save(formCocktail);
-            return "redirect:/cocktails/show/";
+            return "redirect:/cocktails/show";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cocktail with id" + id + "not found");
         }
