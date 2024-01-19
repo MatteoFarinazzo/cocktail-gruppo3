@@ -34,6 +34,17 @@ public class cocktailController {
         return "cocktails/show";
     }
 
+    @GetMapping("/show/{id}")
+    public String show(@PathVariable Integer id, Model model) {
+        Optional<Cocktail> result = cocktailRepository.findById(id);
+        if (result.isPresent()) {
+            Cocktail cocktail = result.get();
+            model.addAttribute("cocktail", cocktail);
+            return "cocktails/show";
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found");
+        }
+    }
     @GetMapping("/create")
     public String create(Model model) {
         Cocktail cocktail = new Cocktail();
@@ -85,9 +96,5 @@ public class cocktailController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cocktail with id" + id + "not found");
         }
     }
-
-
-
-
 
 }
