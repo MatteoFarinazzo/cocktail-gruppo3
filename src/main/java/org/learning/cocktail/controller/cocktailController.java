@@ -31,7 +31,7 @@ public class cocktailController {
         List<Cocktail> cocktailList;
         cocktailList = cocktailRepository.findAll();
         model.addAttribute("cocktailList", cocktailList);
-        return "cocktails/show";
+        return "cocktails/list";
     }
 
     @GetMapping("/show/{id}")
