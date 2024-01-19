@@ -1,10 +1,9 @@
-package org.learning.cocktail.Controller;
+package org.learning.cocktail.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "cocktails")
