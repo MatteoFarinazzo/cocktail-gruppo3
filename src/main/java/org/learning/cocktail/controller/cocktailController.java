@@ -27,7 +27,7 @@ public class cocktailController {
 
 
     @GetMapping
-    public String index  (Model model) {
+    public String index(Model model) {
         List<Cocktail> cocktailList;
         cocktailList = cocktailRepository.findAll();
         model.addAttribute("cocktailList", cocktailList);
@@ -45,6 +45,7 @@ public class cocktailController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found");
         }
     }
+
     @GetMapping("/create")
     public String create(Model model) {
         Cocktail cocktail = new Cocktail();
@@ -59,40 +60,40 @@ public class cocktailController {
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Integer id, Model model){
+    public String edit(@PathVariable Integer id, Model model) {
         Optional<Cocktail> result = cocktailRepository.findById(id);
-        if(result.isPresent()){
+        if (result.isPresent()) {
             model.addAttribute("cocktail", result.get());
             return "cocktails/edit";
-        }else {
+        } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cocktail with id" + id + "not found");
         }
     }
 
     @PostMapping("/edit/{id}")
-    public String update(@PathVariable Integer id,@Valid @ModelAttribute("cocktail") Cocktail formCocktail, BindingResult bindingResult){
+    public String update(@PathVariable Integer id, @Valid @ModelAttribute("cocktail") Cocktail formCocktail, BindingResult bindingResult) {
         Optional<Cocktail> result = cocktailRepository.findById(id);
-        if (result.isPresent()){
+        if (result.isPresent()) {
             Cocktail cocktailToEdit = result.get();
-            if (bindingResult.hasErrors()){
+            if (bindingResult.hasErrors()) {
                 return "cocktails/edit";
             }
             formCocktail.setImage(cocktailToEdit.getImage());
             Cocktail savedPizza = cocktailRepository.save(formCocktail);
             return "redirect:/cocktails/show/";
-        }else {
+        } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cocktail with id" + id + "not found");
         }
     }
 
     @PostMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes){
+    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         Optional<Cocktail> result = cocktailRepository.findById(id);
-        if (result.isPresent()){
+        if (result.isPresent()) {
             cocktailRepository.deleteById(id);
             redirectAttributes.addFlashAttribute("redirectMessage", result.get().getName() + " è stato cancellato!");
-            return "redirect:/cocktails/show/";
-        }else {
+            return "redirect:/cocktails";
+        } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cocktail with id" + id + "not found");
         }
     }

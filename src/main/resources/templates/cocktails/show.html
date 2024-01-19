@@ -19,7 +19,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -38,14 +39,15 @@
     <h1 class="text-center mt-4">Cocktails</h1>
 
     <div class="row">
-        <div class="col-8">
+        <div class="col-7">
             <img class="img-fluid" th:src="@{${cocktail.image}}">
         </div>
-    </div>
-    <div class="col-4 mt-5 pt-5">
-        <h1 class="text-center pb-3 mt-5" th:text="${cocktail.name}"></h1>
-        <h6 class="text-center pb-3" th:text="${cocktail.description}"></h6>
-        <p class="text-center mt-3" th:text="${cocktail.price}+ ' ' + € "></p>
+
+        <div class="col-4 mt-5 pt-5">
+            <h1 class="text-center pb-3 mt-5" th:text="${cocktail.name}"></h1>
+            <h6 class="text-center pb-3" th:text="${cocktail.description}"></h6>
+            <p class="text-center mt-3" th:text="${cocktail.price}+ ' ' + € "></p>
+        </div>
     </div>
 
 
